@@ -1,0 +1,7 @@
+web: gunicorn config.wsgi
+
+
+
+
+
+

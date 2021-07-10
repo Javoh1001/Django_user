@@ -1,0 +1,35 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+</head>
+<body>
+
+    <header>
+           <div class="nav">
+               <h2><a href="{% url 'home' %}" class="logo">Javohir's Blog</a></h2>
+                <ul>
+                    <li> <a href="{% url 'home' %}">Home</a></li>
+                    <li><a href="">Blogs</a></li>
+                    <li><a href="">Portfolio</a></li>
+                    <li><a href="">Contact Us</a></li>
+                    <li><a href="{% url 'post_create' %}">Add Post</a></li>
+                    <li class="user"><a href="{% url 'login' %}">Sign In</a> | <a href="{% url 'signup' %}">Sign Up</a></li>
+                </ul>
+           </div>
+    </header>
+    {% if user.is_authenticated %}
+        <h4>Hi Welcome {{ user.username }}</h4>
+        <a href="{% url 'logout' %}">Logout</a>
+    {% else %}
+        <p>You must sign up first</p>
+        <a href="{% url 'login' %}">Login</a>
+    {% endif %}
+    {% block content %}
+
+    {% endblock content %}
+</body>
+</html>
